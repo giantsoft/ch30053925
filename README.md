@@ -32,7 +32,10 @@ For options, use: `run help`
 |`dev`         | watches for changes/runs make   |
 
 ***
-#### Author
-William Joseph Oney, Jr. 
-Giantsoft, LLC 
-[giantsoftllc@gmail.com](mailto: giantsoftllc@gmail.com)
+
+**Author** William Joseph Oney, Jr.
+
+**Organization**
+
+**Contact** [giantsoftllc@gmail.com](mailto: giantsoftllc@gmail.com)
+
