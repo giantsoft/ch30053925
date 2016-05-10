@@ -33,9 +33,9 @@ For options, use: `run help`
 
 ***
 
-**Author** William Joseph Oney, Jr.
+**Author** - William Joseph Oney, Jr.
 
-**Organization**
+**Organization** -
 
-**Contact** [giantsoftllc@gmail.com](mailto: giantsoftllc@gmail.com)
+**Contact** - [giantsoftllc@gmail.com](mailto: giantsoftllc@gmail.com)
 
