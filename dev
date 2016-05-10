@@ -3,8 +3,8 @@
 echo "Starting watch..."
 
 while [ true ]; do
-	make
 	rm -f .~watch
+	make $1
 	echo "This file is used by ./dev in order to determine if ./make needs to be called" > .~watch
 	OUT=$(watch -g -c -n 0.1 "find ./ -newer .~watch | grep 'Makefile\|\.[ch]\|\.conf'")
 done

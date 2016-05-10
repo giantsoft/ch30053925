@@ -1,6 +1,7 @@
-// Author:	William Joseph Oney, Jr.
-// Org:		Giantsoft, LLC 2016
-// Contact:	giantsoftllc@gmail.com
+// Author:			William Joseph Oney, Jr.
+// Contact:			giantsoftllc@gmail.com
+// Organization:
+// Date:			2016
 
 #ifndef CH30053925_CLI_H
 #define CH30053925_CLI_H

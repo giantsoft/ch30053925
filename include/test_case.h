@@ -1,6 +1,7 @@
-// Author:	William Joseph Oney, Jr.
-// Org:		Giantsoft, LLC 2016
-// Contact:	giantsoftllc@gmail.com
+// Author:			William Joseph Oney, Jr.
+// Contact:			giantsoftllc@gmail.com
+// Organization:
+// Date:			2016
 
 /*! \file test_case.h
     \brief A library for generating random tests.
@@ -17,22 +18,27 @@
 #ifndef CH30053925_TEST_CASE_H
 #define CH30053925_TEST_CASE_H
 
-#include "main.h"
-
 typedef struct {
+
+	unsigned int seed;
 
 	int dimensions;
 	int n_vars;
 	unsigned long n_tups;
+	
+	int bpt;
+	unsigned long sz_data;
+
 	double avg;
 
 } TEST_CASE;
 
+void tcase_randomize( TEST_CASE * );
 
-void tcase_randomize( TEST_CASE *test_case );
+void tcase_print_hdr();
 
-void tcase_print( TEST_CASE *test_case );
+void tcase_print( TEST_CASE *, char );
 
-void tcase_gen_files( TEST_CASE *test_case, const char *dir );
+void tcase_gen_files( TEST_CASE *, const char * );
 
 #endif

@@ -2,31 +2,49 @@ vpath %.h include
 vpath %.c src
 vpath %.o obj
 
-objects = common.o run.o profile.o test_case.o
+units	= common run shell_util test_case profile
+objects	= $(addsuffix .o, $(units)) 
 
-all: docs $(objects) run profile
+robj	= $(addprefix obj/, $(addsuffix .o, common run))
+pobj	= $(addprefix obj/, $(addsuffix .o, common test_case profile))
 
-$(objects): %.c %.h
-	$(cc) $@.c -o lib/$@ $(flags)
+libdirs = obj
+incdirs	= include
 
-%.o: %.c common.h
-	$(cc) -c $@.c
+AFLAGS	= -O3 -pthread
+CFLAGS	= $(AFLAGS) $(addprefix -I, $(incdirs))
+LFLAGS	= $(AFLAGS) -Lobj
 
-run: common.o
-	$(cc) run.o 
+all: $(info Making all)
+all: run profile
 
-profile: common.o profile.o
+profile.o: test_case.h shell_util.h
 
-common.h: limits.h  size.h
+run: common.o run.o
+	gcc $(LFLAGS) -o run $(robj)
 
+profile: common.o profile.o test_case.o shell_util.o
+	gcc $(LFLAGS) -o profile $(pobj) 
+
+%.o: %.c objdir
+	gcc $(CFLAGS) -c $< -o obj/$@
+
+objdir:
+	mkdir -p obj
 dev:
 	@chmod +x dev
 	$(info dev is ready for execution: use ./dev to start watching for changes)
-	
-docs:
+
+dev-profile: all
+	./profile $1
+
+docs: run profile
 	@doxygen doxygen.conf
 
-.PHONY: docs dev
+.PHONY: docs dev clean clean-docs
+
+clean-docs:
+	rm -rf docs
 
 clean:
-	rm -o
+	rm -rf obj run profile
